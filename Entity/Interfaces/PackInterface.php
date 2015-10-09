@@ -19,7 +19,6 @@ namespace Elcodi\Component\Product\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\ETaggableInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
@@ -28,9 +27,9 @@ use Elcodi\Component\Media\Entity\Interfaces\PrincipalImageInterface;
 use Elcodi\Component\MetaData\Entity\Interfaces\MetaDataInterface;
 
 /**
- * Interface ProductInterface.
+ * Interface PackInterface.
  */
-interface ProductInterface
+interface PackInterface
     extends
     IdentifiableInterface,
     PurchasableInterface,
@@ -103,6 +102,72 @@ interface ProductInterface
      * @return string Short description
      */
     public function getShortDescription();
+
+    /**
+     * Adds an purchasable if not already in the collection.
+     *
+     * @param PurchasableInterface $purchasable Purchasable
+     *
+     * @return $this Self object;
+     */
+    public function addPurchasable(PurchasableInterface $purchasable);
+
+    /**
+     * Removes an purchasable from the collection.
+     *
+     * @param PurchasableInterface $purchasable Purchasable to be removed
+     *
+     * @return $this Self object
+     */
+    public function removePurchasable(PurchasableInterface $purchasable);
+
+    /**
+     * Returns purchasable purchasables.
+     *
+     * @return Collection Purchasables
+     */
+    public function getPurchasables();
+
+    /**
+     * Sets purchasable purchasables.
+     *
+     * @param Collection $purchasables Purchasables
+     *
+     * @return $this Self object
+     */
+    public function setPurchasables(Collection $purchasables);
+
+    /**
+     * Get Products.
+     *
+     * @return Collection Products
+     */
+    public function getProducts();
+
+    /**
+     * Sets Products.
+     *
+     * @param Collection $products Products
+     *
+     * @return $this Self object
+     */
+    public function setProducts($products);
+
+    /**
+     * Get Variants.
+     *
+     * @return Collection Variants
+     */
+    public function getVariants();
+
+    /**
+     * Sets Variants.
+     *
+     * @param Collection $variants Variants
+     *
+     * @return $this Self object
+     */
+    public function setVariants($variants);
 
     /**
      * Set categories.
@@ -180,91 +245,25 @@ interface ProductInterface
     public function setManufacturer(ManufacturerInterface $manufacturer = null);
 
     /**
-     * Product manufacturer.
+     * Get product manufacturer.
      *
      * @return ManufacturerInterface Manufacturer
      */
     public function getManufacturer();
 
     /**
-     * Returns product principal variant.
+     * Set stock type.
      *
-     * @return VariantInterface
-     */
-    public function getPrincipalVariant();
-
-    /**
-     * Sets product principal variant.
-     *
-     * @param VariantInterface $principalVariant
+     * @param int $stockType Stock type
      *
      * @return $this Self object
      */
-    public function setPrincipalVariant(VariantInterface $principalVariant);
+    public function setStockType($stockType);
 
     /**
-     * Adds an attribute if not already in the collection.
+     * Get stock type.
      *
-     * @param AttributeInterface $attribute Attribute
-     *
-     * @return $this Self object;
+     * @return int Stock type
      */
-    public function addAttribute(AttributeInterface $attribute);
-
-    /**
-     * Removes an attribute from the collection.
-     *
-     * @param AttributeInterface $attribute Attribute to be removed
-     *
-     * @return $this Self object
-     */
-    public function removeAttribute(AttributeInterface $attribute);
-
-    /**
-     * Returns product attributes.
-     *
-     * @return Collection Attributes
-     */
-    public function getAttributes();
-
-    /**
-     * Sets product attributes.
-     *
-     * @param Collection $attributes Attributes
-     *
-     * @return $this Self object
-     */
-    public function setAttributes(Collection $attributes);
-
-    /**
-     * Gets product variants.
-     *
-     * @return Collection Variants
-     */
-    public function getVariants();
-
-    /**
-     * Adds a Variant for this Product.
-     *
-     * @param VariantInterface $variant Variant
-     *
-     * @return $this Self object
-     */
-    public function addVariant(VariantInterface $variant);
-
-    /**
-     * Sets product variants.
-     *
-     * @param Collection $variants Variants
-     *
-     * @return $this Self object
-     */
-    public function setVariants(Collection $variants);
-
-    /**
-     * Tells if this product has variants.
-     *
-     * @return bool Product has variants
-     */
-    public function hasVariants();
+    public function getStockType();
 }

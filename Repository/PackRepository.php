@@ -15,31 +15,13 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Product;
+namespace Elcodi\Component\Product\Repository;
+
+use Doctrine\ORM\EntityRepository;
 
 /**
- * Class ElcodiProductTypes.
+ * Class PackRepository.
  */
-final class ElcodiProductStock
+class PackRepository extends EntityRepository
 {
-    /**
-     * @var null
-     *
-     * Infinite stock
-     */
-    const INFINITE_STOCK = null;
-
-    /**
-     * @var int
-     *
-     * Inherit stock
-     */
-    const INHERIT_STOCK = 0;
-
-    /**
-     * @var int
-     *
-     * Specific stock
-     */
-    const SPECIFIC_STOCK = 1;
 }
